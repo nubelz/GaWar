@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #55c91250;
+  background-image: url(/images/Playing\ Card\ Suits\ Checker\ -\ Green.jpg);
+  background-color: #1d4b02;
   text-align: center;
 }
 
@@ -39,6 +40,8 @@ button {
   font-size: 18px;
   cursor: pointer;
   align: center;
+  background-color: burlywood;
+  border-radius: 12px;
 }
 
 .result {
