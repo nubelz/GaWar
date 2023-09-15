@@ -42,14 +42,14 @@ function drawCard() {
 
   determineWinner();
 
-  if (cardDeck.length === 0) {
+  if (cardDeck.length === 52) {
       endGame();
   }
 }
 
 function drawCard() {
     if (cardDeck.length === 0) {
-        alert("No more cards in the deck!");
+      
         return;
     }
 
@@ -85,8 +85,7 @@ function startWar() {
     warCards.push(player1Card);
     warCards.push(player2Card);
     for (let i = 0; i < 2; i++) {
-        if (cardDeck.length === 0) {
-            alert("No more cards in the deck!");
+        if (cardDeck.length === 52) {
             return;
         }
         warCards.push(cardDeck.pop());
