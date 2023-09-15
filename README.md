@@ -17,10 +17,9 @@ The deck is divided evenly, with each player getting 26 cards, dealt one at a ti
 face them down and then put them on the bottom of his/her own deck
 9. If player 1 and 2 second revealed cards still have the same value, back to No.5 and continue.
 10. The player who win the “war”, takes all cards on the desk, face them down and put them to the  bottom of his/her own deck
-11. The players continue until one of them has all 52 card
 
 ### Requirements
-Must account for war and double war conditions
+Must account for war and double war conditions.
 
 ### Tech used:
 -JavaScript
@@ -44,5 +43,7 @@ https://fonts.google.com/
 
 ### IceBox Items:
 -Add function to change usernames
+
 -add animations to shuffle cards and draw cards
+
 -add stacking effect to show that 
