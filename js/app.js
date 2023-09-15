@@ -2,9 +2,12 @@
 const cardValues = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 const cardSuits = ["Hearts", "Diamonds", "Clubs", "Spades"];
 
-
+let warCards = [];
 let cardDeck = [];
 let maxScore = 52;
+let player1Card = null;
+let player2Card = null;
+
 
 function createDeck() {
     for (const suit of cardSuits) {
@@ -24,8 +27,6 @@ function shuffleDeck() {
 createDeck();
 shuffleDeck();
 
-let player1Card = null;
-let player2Card = null;
 
 function drawCard() {
   if (cardDeck.length === 0) {
@@ -45,10 +46,6 @@ function drawCard() {
       endGame();
   }
 }
-
-
-
-let warCards = [];
 
 function drawCard() {
     if (cardDeck.length === 0) {
@@ -80,8 +77,7 @@ function endGame() {
         startWar();
     }
 
-    // Disable the "Draw Card" button since the game is over
-    document.querySelector('button').disabled = true;
+    
 }
 
 function startWar() {
@@ -110,11 +106,9 @@ function revealNextWarCard() {
     const nextCard1 = warCards.pop();
     const nextCard2 = warCards.pop();
 
-    // Display the next cards
     document.getElementById('card1').textContent = `${nextCard1.value} of ${nextCard1.suit}`;
     document.getElementById('card2').textContent = `${nextCard2.value} of ${nextCard2.suit}`;
 
-    // Determine the winner of the WAR
     if (nextCard1.value > nextCard2.value) {
         document.getElementById('result').textContent = 'Player 1 wins the WAR!';
         player1Score += warCards.length;
