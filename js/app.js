@@ -4,6 +4,7 @@ const cardSuits = ["Hearts", "Diamonds", "Clubs", "Spades"];
 
 
 let cardDeck = [];
+let maxScore = 52;
 
 function createDeck() {
     for (const suit of cardSuits) {
@@ -27,6 +28,29 @@ let player1Card = null;
 let player2Card = null;
 
 function drawCard() {
+  if (cardDeck.length === 0) {
+      alert("No more cards in the deck!");
+      return;
+  }
+
+  player1Card = cardDeck.pop();
+  player2Card = cardDeck.pop();
+
+  document.getElementById('card1').textContent = `${player1Card.value} of ${player1Card.suit}`;
+  document.getElementById('card2').textContent = `${player2Card.value} of ${player2Card.suit}`;
+
+  determineWinner();
+
+  if (cardDeck.length === 0) {
+      endGame();
+  }
+}
+
+
+
+let warCards = [];
+
+function drawCard() {
     if (cardDeck.length === 0) {
         alert("No more cards in the deck!");
         return;
@@ -39,6 +63,79 @@ function drawCard() {
     document.getElementById('card2').textContent = `${player2Card.value} of ${player2Card.suit}`;
 
     determineWinner();
+
+    if (cardDeck.length === 0) {
+        endGame();
+    }
+}
+
+function endGame() {
+    const resultElement = document.getElementById('result');
+    if (player1Score > player2Score) {
+        resultElement.textContent = 'Player 1 wins the game!';
+    } else if (player2Score > player1Score) {
+        resultElement.textContent = 'Player 2 wins the game!';
+    } else {
+        resultElement.textContent = 'It\'s a tie game! Time for WAR!';
+        startWar();
+    }
+
+    // Disable the "Draw Card" button since the game is over
+    document.querySelector('button').disabled = true;
+}
+
+function startWar() {
+
+    warCards.push(player1Card);
+    warCards.push(player2Card);
+    for (let i = 0; i < 2; i++) {
+        if (cardDeck.length === 0) {
+            alert("No more cards in the deck!");
+            return;
+        }
+        warCards.push(cardDeck.pop());
+        warCards.push(cardDeck.pop());
+    }
+
+
+    document.getElementById('result').textContent = 'WAR!';
+
+    document.querySelector('button').disabled = true;
+
+  
+    setTimeout(revealNextWarCard, 1000);
+}
+
+function revealNextWarCard() {
+    const nextCard1 = warCards.pop();
+    const nextCard2 = warCards.pop();
+
+    // Display the next cards
+    document.getElementById('card1').textContent = `${nextCard1.value} of ${nextCard1.suit}`;
+    document.getElementById('card2').textContent = `${nextCard2.value} of ${nextCard2.suit}`;
+
+    // Determine the winner of the WAR
+    if (nextCard1.value > nextCard2.value) {
+        document.getElementById('result').textContent = 'Player 1 wins the WAR!';
+        player1Score += warCards.length;
+    } else if (nextCard2.value > nextCard1.value) {
+        document.getElementById('result').textContent = 'Player 2 wins the WAR!';
+        player2Score += warCards.length;
+    } else {
+        document.getElementById('result').textContent = 'It\'s a tie again! Another WAR!';
+        startWar();
+        return;
+    }
+
+    updateScoreboard();
+
+    if (cardDeck.length === 0) {
+        endGame();
+        return;
+    }
+
+
+    document.querySelector('button').disabled = false;
 }
 
 function determineWinner() {
