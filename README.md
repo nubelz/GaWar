@@ -18,6 +18,8 @@ face them down and then put them on the bottom of his/her own deck
 9. If player 1 and 2 second revealed cards still have the same value, back to No.5 and continue.
 10. The player who win the “war”, takes all cards on the desk, face them down and put them to the  bottom of his/her own deck
 
+![Alt text](image.png)
+
 ### Requirements
 Must account for war and double war conditions.
 
