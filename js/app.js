@@ -87,15 +87,19 @@ function determineWinner() {
 }
 
 function newGame() {
-    
-    cardDeck = [];
-    createDeck();
-    shuffleDeck();
-    player1Card = null;
-    player2Card = null;
+  cardDeck = [];
+  createDeck();
+  shuffleDeck();
+  player1Card = null;
+  player2Card = null;
 
-    document.getElementById('card1').textContent = '?';
-    document.getElementById('card2').textContent = '?';
+  player1Score = 0;
+  player2Score = 0;
 
-    document.getElementById('result').textContent = '';
+  document.getElementById('card1').textContent = '?';
+  document.getElementById('card2').textContent = '?';
+
+  document.getElementById('result').textContent = '';
+
+  updateScoreboard();
 }
