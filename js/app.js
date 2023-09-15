@@ -17,3 +17,24 @@ function shuffleDeck() {
       [cardDeck[i], cardDeck[j]] = [cardDeck[j], cardDeck[i]];
   }
 }
+
+createDeck();
+shuffleDeck();
+
+let player1Card = null;
+let player2Card = null;
+
+function drawCard() {
+  if (cardDeck.length === 0) {
+      alert("No more cards in the deck!");
+      return;
+  }
+
+  player1Card = cardDeck.pop();
+  player2Card = cardDeck.pop();
+
+  document.getElementById('card1').textContent = `${player1Card.value} of ${player1Card.suit}`;
+  document.getElementById('card2').textContent = `${player2Card.value} of ${player2Card.suit}`;
+
+  determineWinner();
+}
